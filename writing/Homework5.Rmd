@@ -20,6 +20,13 @@ library(broom)
 library(purrr)
 ```
 
+```{r}
+install.packages("sf")
+install.packages("tigris")
+library(sf)
+library(tigris)
+```
+
 
 ## Organizing Data
 
