@@ -31,9 +31,25 @@ library(tigris)
 # getting maps 
 
 ```{r}
+nm_counties <- counties(state = "NM", cb = TRUE, class = "sf")
+class(nm_counties)
+nm_counties %>% 
+  slice(1:3)
+```
+
+```{r}
+bernalillo_county <- nm_counties %>%      #Let's filter to only bernalillo county
+  filter(NAME %in% c("Bernalillo"))
+bernalillo_county
+
 
 ```
 
+
+```{r}
+ggplot() + 
+  geom_sf(data = bernalillo_county)
+```
 
 ## Organizing Data
 
