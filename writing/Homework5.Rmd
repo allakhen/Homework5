@@ -51,6 +51,17 @@ ggplot() +
   geom_sf(data = bernalillo_county)
 ```
 
+```{r}
+county_sub <- county_subdivisions(state = "NM", county = "Bernalillo", cb = TRUE, class = "sf") 
+class(county_sub)
+```
+
+```{r}
+blocks <- blocks(state = "NM", county = "Bernalillo", class = "sf") 
+class(blocks)
+```
+
+
 ## Organizing Data
 
 ```{r}
@@ -80,12 +91,19 @@ albq_homicides2 <- st_as_sf(albq_homicides2, coords = c("lon", "lat")) %>%
 albq_homicides2 
 ```
 
+
 ```{r}
-ggplot() + 
-  geom_sf(data = co_counties, color = "lightgray") + 
-  geom_sf(data = co_floods, aes(color = month(begin_date_time),
-                                  shape = time)) + 
-  scale_color_viridis(name = "Month") 
+ggplot() +
+  geom_sf(data = bernalillo_county) +
+  geom_sf(data = county_sub) +
+  geom_sf(data = blocks) + 
+  geom_sf(data = albq_homicides2, aes(color = victim_race,
+                                  shape = disposition)) +
+  xlim(c(106.8, 106.4)) + ylim(c(35, 35.20))
 ```
 
+
+
++ 
+  scale_color_viridis(name = "victim_race") 
 
