@@ -70,8 +70,22 @@ albq_homicides <- homicides %>%
   select(victim_race, lat, lon, disposition)
 albq_homicides
 
+albq_homicides2 <- na.omit(albq_homicides)
+albq_homicides2
 ```
 
+```{r}
+albq_homicides2 <- st_as_sf(albq_homicides2, coords = c("lon", "lat")) %>% 
+  st_set_crs(4269)
+albq_homicides2 
+```
 
+```{r}
+ggplot() + 
+  geom_sf(data = co_counties, color = "lightgray") + 
+  geom_sf(data = co_floods, aes(color = month(begin_date_time),
+                                  shape = time)) + 
+  scale_color_viridis(name = "Month") 
+```
 
 
