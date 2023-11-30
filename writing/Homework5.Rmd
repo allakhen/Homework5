@@ -85,13 +85,18 @@ albq_homicides2 <- na.omit(albq_homicides)
 albq_homicides2
 ```
 
+
 ```{r}
 albq_homicides2 <- st_as_sf(albq_homicides2, coords = c("lon", "lat")) %>% 
   st_set_crs(4269)
 albq_homicides2 
 ```
 
+## Map with shapes for disposition 
 
+
+
+## Map with facet wrap for each disposition 
 ```{r}
 ggplot() +
   geom_sf(data = bernalillo_county) +
@@ -99,6 +104,7 @@ ggplot() +
   geom_sf(data = blocks) + 
   geom_sf(data = albq_homicides2, aes(color = victim_race,
                                   shape = disposition)) +
+  facet_wrap(~ disposition, ncol = 3) +
   xlim(c(106.8, 106.4)) + ylim(c(35, 35.20))
 ```
 
