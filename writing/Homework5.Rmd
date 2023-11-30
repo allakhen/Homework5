@@ -22,8 +22,6 @@ library(maps)
 ```
 
 ```{r}
-install.packages("sf")
-install.packages("tigris")
 library(sf)
 library(tigris)
 ```
@@ -43,12 +41,6 @@ bernalillo_county <- nm_counties %>%      #Let's filter to only bernalillo count
 bernalillo_county
 
 
-```
-
-
-```{r}
-ggplot() + 
-  geom_sf(data = bernalillo_county)
 ```
 
 ```{r}
@@ -93,7 +85,7 @@ albq_homicides2
 ```
 
 ## Map with shapes for disposition 
-```{r}
+```{r fig.height = 5, fig.width= 8}
 ggplot() +
   geom_sf(data = bernalillo_county) +
   geom_sf(data = county_sub) +
@@ -107,7 +99,7 @@ ggplot() +
 
 
 ## Map with facet wrap for each disposition 
-```{r}
+```{r fig.height = 5, fig.width= 7}
 ggplot() +
   geom_sf(data = bernalillo_county) +
   geom_sf(data = county_sub) +
@@ -119,7 +111,4 @@ ggplot() +
 ```
 
 
-
-+ 
-  scale_color_viridis(name = "victim_race") 
 
